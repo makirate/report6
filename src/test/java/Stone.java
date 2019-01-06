@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Stone {
 
     private int x;
@@ -24,8 +25,27 @@ public class Stone {
         return color;
     }
 
-    public void reverse(){
-
+    public void reverse() {
     }
 
+}
+class PutStone{
+
+    private int x;
+    private int y;
+
+    public PutStone(){
+        Scanner position = new Scanner(System.in);
+        x = position.nextInt();
+        y = position.nextInt();
+        this.x = x;
+        this.y = y;
+    }
+    public int getPlaceX() {
+        return x;
+    }
+    public int getPlaceY(){
+        return y;
+
+    }
 }

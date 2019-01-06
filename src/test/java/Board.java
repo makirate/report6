@@ -15,7 +15,7 @@ public class Board {
             }
         }
     }
-    public void putStone(){
+    public void putStone(Stone stone){
 
     }
 

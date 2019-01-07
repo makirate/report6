@@ -1,5 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-public class Stone {
+import java.util.stream.Stream;
+
+public class Stone extends ArrayList<Stone> {
 
     private int x;
     private int y;
@@ -10,8 +13,13 @@ public class Stone {
         this.y = y;
         this.color = color;
     }
-
     public Stone(){
+        //this.color = "G";
+    }
+
+    public Stone(int x, int y){
+        this.x = x;
+        this.y = y;
         this.color = "G";
     }
 
@@ -25,27 +33,38 @@ public class Stone {
         return color;
     }
 
-    public void reverse() {
+    @Override
+    public Stream<Stone> stream() {
+        return null;
     }
-
 }
-class PutStone{
+class PutStone {
+    int x;
+    int y;
+    String color;
 
-    private int x;
-    private int y;
-
-    public PutStone(){
+    public PutStone(String color) {
         Scanner position = new Scanner(System.in);
         x = position.nextInt();
         y = position.nextInt();
         this.x = x;
         this.y = y;
+        this.color = color;
     }
-    public int getPlaceX() {
-        return x;
+
+    public Stone getDate() {
+        Stone stone = new Stone(this.x, this.y, this.color);
+        return stone;
     }
-    public int getPlaceY(){
-        return y;
+
+    public void reverse() {
+        if (color.equals("W")) {
+
+        } else {
+
+        }
+
 
     }
+
 }

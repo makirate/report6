@@ -25,6 +25,11 @@ public class Stone extends ArrayList<Stone> {
         this.color = "G";
     }
 
+    public Stone(String color){
+        this.color = color;
+
+    }
+
     public int getX(){
         return x;
     }
@@ -33,6 +38,9 @@ public class Stone extends ArrayList<Stone> {
     }
     public String getColor(){
         return color;
+    }
+    public void setColor(){
+        this.color =  color ;
     }
 
     @Override
@@ -44,8 +52,8 @@ public class Stone extends ArrayList<Stone> {
 
     public Stone getDate(String color) {
         Scanner data = new Scanner(System.in);
-        int x = data.nextInt();
-        int y = data.nextInt();
+        int x = data.nextInt()-1;
+        int y = data.nextInt()-1;
         Stone stone = new Stone(x, y, color);
         return stone;
     }

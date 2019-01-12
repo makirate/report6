@@ -70,6 +70,14 @@ class Reverce{
 
     public void reverce(int vectorX, int vectorY){
         System.out.println(board[y][x].getColor());
+        for (Stone[] boardX : board) {
+            System.out.println();
+            for (Stone stone : boardX) {
+                System.out.print(stone.getColor());
+            }
+        }
+        System.out.println();
+
         while (!(board[y + vectorY][x + vectorX].getColor().equals("G")) && 0 < y && y < 7 && 0 < x && x < 7) {
             if (!(board[y + vectorX][x + vectorY].getColor().equals(color))) {
                 Integer[] place = {x + vectorX, y + vectorY};

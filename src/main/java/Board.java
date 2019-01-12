@@ -1,97 +1,55 @@
-package ie.uryuktu.ac.jp.e185708;
-import java.util.*;
-public class BoardTest {
+/*import java.util.ArrayList;
+
+public class Board {
+    Stone stone = new Stone();
+
 
     Stone[][] board = new Stone[8][8];
 
-    public BoardTest() {
+    public Board(){
 
-        for (int y = 0; y < 8; y++) {
+        for(int y = 0; y < 8; y++){
             System.out.println();
-            for (int x = 0; x < 8; x++) {
-                if (2 < x && 2 < y && x < 5 && y < 5) {
-                    int a = x + y;
-                    if (a % 2 == 0) {
-                        Stone stone = new Stone(x, y, "W");
+            for(int x = 0; x < 8; x++){
+                if(2<x && 2<y && x<5 && y<5){
+                    int a = x+y;
+                    if(a%2 == 0){
+                        Stone stone = new Stone(x,y,"W");
                         this.board[y][x] = stone;
                         System.out.print(stone.getColor());
-                    } else {
-                        Stone stone = new Stone(x, y, "B");
+                    }else{
+                        Stone stone = new Stone(x,y,"B");
                         this.board[y][x] = stone;
                         System.out.print(stone.getColor());
                     }
-                } else {
-                    Stone stone = new Stone(x, y);
-                    this.board[y][x] = stone;
-                    System.out.print(stone.getColor());
                 }
-            }
-        }
-    }
-
-    public Stone[][] getBoard() {
-        for (Stone[] boardX : board) {
-            System.out.println();
-            for (Stone stone : boardX) {
+                else{
+                Stone stone = new Stone(x,y);
+                this.board[y][x] = stone;
                 System.out.print(stone.getColor());
             }
+            }
         }
-        return board;
+    }
+
+    public Stone[][] getBoard(){
+        for(Stone[] boardX : board){
+            System.out.println();
+            for(Stone stone : boardX){
+                System.out.print(stone.getColor());
+        }
+    }
+    return board;
     }
 
 
-    public void putStone(Stone stone) {
+    public void putStone(Stone stone){
         int x = stone.getX();
         int y = stone.getY();
         this.board[y][x] = stone;
     }
-}
 
-class Reverce{
-
-    private int moveX = 0;
-    private int moveY = 0;
-    private int originalX;
-    private int originalY;
-    private int x = moveX + originalX;
-    private int y = moveY + originalY;
-    private String color;
-    private Stone[][] board;
-
-    private ArrayList<Integer[]> placeList = new ArrayList<>();
-
-    Reverce(Stone stone, Stone[][] board) {
-        this.originalX = stone.getX();
-        this.originalY = stone.getY();
-        this.color = stone.getColor();
-        this.board = board;
-    }
-
-
-    public void reverce(int vectorX, int vectorY){
-        System.out.println(board[y][x].getColor());
-        while (!(board[y + vectorY][x + vectorX].getColor().equals("G")) && 0 < y && y < 7 && 0 < x && x < 7) {
-            if (!(board[y + vectorX][x + vectorY].getColor().equals(color))) {
-                Integer[] place = {x + vectorX, y + vectorY};
-                placeList.add(place);
-                this.moveX += vectorX;
-                this.moveY += vectorY;
-                System.out.println("if");
-            } else {
-                System.out.println("else");
-                for (int i = 0; i < placeList.size(); i++) {
-                    Integer[] a = placeList.get(i);
-                    Stone inStone = new Stone(a[0], a[1], color);
-                    board[a[1]][a[0]] = inStone;
-                }
-            }
-            break;
-        }
-    }
-}
-
-
-    /*public void reverse(Stone stone) {
+    public void reverse(Stone stone) {
         if (stone.getColor().equals("B")) {
             int x = stone.getX();
             int y = stone.getY();
@@ -138,9 +96,16 @@ class Reverce{
 
                 }
             }
+            while(){}
+            while(){}
+            while(){}
+            while(){}
+            while(){}
+            while(){}
         } else {
 
         }
 
-    }**/
+    }
 
+}}**/

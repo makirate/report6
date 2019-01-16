@@ -14,7 +14,7 @@ public class Stone extends ArrayList<Stone> {
         this.color = color;
     }
     public Stone(){
-        //this.color = "G";
+        this.color = "G";
     }
 
     public Stone(int x, int y){
@@ -37,9 +37,6 @@ public class Stone extends ArrayList<Stone> {
     public String getColor(){
         return color;
     }
-    public void setColor(){
-        this.color =  color ;
-    }
 
     @Override
     public Stream<Stone> stream() {
@@ -55,5 +52,4 @@ public class Stone extends ArrayList<Stone> {
         Stone stone = new Stone(x, y, color);
         return stone;
     }
-
 }

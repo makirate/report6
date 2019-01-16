@@ -3,7 +3,6 @@ import java.util.*;
 public class BoardTest {
 
     Stone[][] board = new Stone[8][8];
-    boolean a ;
 
     public BoardTest() {
 
@@ -44,29 +43,27 @@ public class BoardTest {
     public boolean putStone(Stone stone,BoardTest board) {
         int x = stone.getX();
         int y = stone.getY();
+        boolean a;
         if(board.board[y][x].getColor().equals("G")){
-            boolean a = true;
-            this.a = a;
+            a = true;
             board.board[y][x] = stone;
         }else{
-            boolean a = false;
-            this.a = a;
+            a = false;
         }
-
         return a;
     }
 }
 
 class Reverce {
 
-    private int moveX = 0;
-    private int moveY = 0;
     private int originalX ;
     private int originalY ;
     private String color;
     private Stone[][] board;
+    int x = 0;
+    int y = 0;
 
-    private ArrayList<Integer[]> placeList = new ArrayList<>();
+    ArrayList<Integer[]> placeList = new ArrayList<>();
 
     Reverce(Stone stone, Stone[][] board) {
         this.originalX = stone.getX();
@@ -76,86 +73,35 @@ class Reverce {
     }
 
 
-    public void reverce(int vectorX, int vectorY){
-        int x = originalX + moveX;
-        int y = originalY + moveY;
-        System.out.println();
-        while (!(board[y + vectorY][x + vectorX].getColor().equals("G")) && 0 < y && y < 7 && 0 < x && x < 7) {
-            System.out.println("pass G");
-            System.out.println(color);
-            System.out.println(board[y + vectorY][x + vectorX].getColor());
-            System.out.println(vectorX);
-            System.out.println(vectorY);
+    public int reverce(int vectorX, int vectorY){
+        int x = originalX;
+        int y = originalY;
+        ArrayList<Integer[]> placeList = new ArrayList<>();
+        exit : while (!(board[y + vectorY][x + vectorX].getColor().equals("G")) && 0 < y && y < 7 && 0 < x && x < 7) {
             if (!(board[y + vectorY][x + vectorX].getColor().equals(color))) {
                 Integer[] place = {x + vectorX, y + vectorY};
                 placeList.add(place);
-                this.moveX += vectorX;
-                this.moveY += vectorY;
-                System.out.println("pass if");
+                x += vectorX;
+                y += vectorY;
+                this.x = x;
+                this.y = y;
             } else {
-                System.out.println("pass else");
-                for (int i = 0; i < placeList.size(); i++) {
-                    Integer[] a = placeList.get(i);
-                    Stone inStone = new Stone(a[0], a[1], color);
-                    board[a[1]][a[0]] = inStone;
+                if(placeList.size() == 0){
+                    break exit;
+                }else{
+                    for (int i = 0; i < placeList.size(); i++) {
+                        Integer[] a = placeList.get(i);
+                        Stone inStone = new Stone(a[0], a[1], color);
+                        board[a[1]][a[0]] = inStone;
+                        this.placeList.add(a);
+                        break exit;
+                    }
                 }
             }
-            break;
         }
+        return placeList.size();
+
     }
 }
 
-
-    /*public void reverse(Stone stone) {
-        if (stone.getColor().equals("B")) {
-            int x = stone.getX();
-            int y = stone.getY();
-            int[] listY = {y,y,y,y,y,y};
-            int[] listX = {x,x,x,x,x,x};
-            ArrayList<Integer[]> placeList = new ArrayList<>();
-            ArrayList<Integer[]> placeList2 = new ArrayList<>();
-            ArrayList<Integer[]> placeList3 = new ArrayList<>();
-            ArrayList<Integer[]> placeList4 = new ArrayList<>();
-            ArrayList<Integer[]> placeList5 = new ArrayList<>();
-            ArrayList<Integer[]> placeList6 = new ArrayList<>();
-            ArrayList<Integer[]> placeList7 = new ArrayList<>();
-            ArrayList<Integer[]> placeList8 = new ArrayList<>();
-
-            while(!(board[listY[0]-1][x].getColor().equals("G")) && 0<listY[0]){
-
-                if(board[listY[0]-1][x].getColor().equals("W")){
-                Integer[] place = {x,listY[0]-1};
-                listY[0]--;
-                placeList.add(place);
-                }else{
-                    for(int i = 0; i < placeList.size(); i++) {
-                        Integer[] a = placeList.get(i);
-                        Stone inStone = new Stone(a[0],a[1],"B");
-                        putStone(inStone);
-                    }
-                    break;
-                }
-
-
-            }
-            while(!(board[listY[1]-1][listX[0]+1].getColor().equals("G")) && 0<listY[1] && listX[0]<7 ){
-                if(board[listY[1]-1][listX[0]].getColor().equals("W")){
-                    Integer[] place = {listX[0]+1,listY[1]-1};
-                    listY[1]--;
-                    listX[0]++;
-                    placeList2.add(place);
-                }else{
-                    for(int i = 0; i < placeList2.size(); i++){
-                        Integer[] a = placeList2.get(i);
-                        Stone inStone = new Stone(a[0],a[1],"B");
-                        putStone(inStone);
-                    }
-
-                }
-            }
-        } else {
-
-        }
-
-    }**/
 

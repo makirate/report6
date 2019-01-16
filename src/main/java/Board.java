@@ -1,111 +1,105 @@
-/*import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class Board {
-    Stone stone = new Stone();
-
 
     Stone[][] board = new Stone[8][8];
 
-    public Board(){
+    public Board() {
 
-        for(int y = 0; y < 8; y++){
+        for (int y = 0; y < 8; y++) {
             System.out.println();
-            for(int x = 0; x < 8; x++){
-                if(2<x && 2<y && x<5 && y<5){
-                    int a = x+y;
-                    if(a%2 == 0){
-                        Stone stone = new Stone(x,y,"W");
+            for (int x = 0; x < 8; x++) {
+                if (2 < x && 2 < y && x < 5 && y < 5) {
+                    int a = x + y;
+                    if (a % 2 == 0) {
+                        Stone stone = new Stone(x, y, "W");
                         this.board[y][x] = stone;
                         System.out.print(stone.getColor());
-                    }else{
-                        Stone stone = new Stone(x,y,"B");
+                    } else {
+                        Stone stone = new Stone(x, y, "B");
                         this.board[y][x] = stone;
                         System.out.print(stone.getColor());
                     }
+                } else {
+                    Stone stone = new Stone(x, y);
+                    this.board[y][x] = stone;
+                    System.out.print(stone.getColor());
                 }
-                else{
-                Stone stone = new Stone(x,y);
-                this.board[y][x] = stone;
-                System.out.print(stone.getColor());
-            }
             }
         }
     }
 
-    public Stone[][] getBoard(){
-        for(Stone[] boardX : board){
+    public Stone[][] getBoard() {
+        for (Stone[] boardX : board) {
             System.out.println();
-            for(Stone stone : boardX){
+            for (Stone stone : boardX) {
                 System.out.print(stone.getColor());
+            }
         }
-    }
-    return board;
+        return board;
     }
 
 
-    public void putStone(Stone stone){
+    public boolean putStone(Stone stone, Board board) {
         int x = stone.getX();
         int y = stone.getY();
-        this.board[y][x] = stone;
+        boolean a;
+        if(board.board[y][x].getColor().equals("G")){
+            a = true;
+            board.board[y][x] = stone;
+        }else{
+            a = false;
+        }
+        return a;
     }
 
-    public void reverse(Stone stone) {
-        if (stone.getColor().equals("B")) {
-            int x = stone.getX();
-            int y = stone.getY();
-            int[] listY = {y,y,y,y,y,y};
-            int[] listX = {x,x,x,x,x,x};
-            ArrayList<Integer[]> placeList = new ArrayList<>();
-            ArrayList<Integer[]> placeList2 = new ArrayList<>();
-            ArrayList<Integer[]> placeList3 = new ArrayList<>();
-            ArrayList<Integer[]> placeList4 = new ArrayList<>();
-            ArrayList<Integer[]> placeList5 = new ArrayList<>();
-            ArrayList<Integer[]> placeList6 = new ArrayList<>();
-            ArrayList<Integer[]> placeList7 = new ArrayList<>();
-            ArrayList<Integer[]> placeList8 = new ArrayList<>();
+    static class Reverce {
 
-            while(!(board[listY[0]-1][x].getColor().equals("G")) && 0<listY[0]){
+        private int originalX ;
+        private int originalY ;
+        private String color;
+        private Stone[][] board;
+        int x = 0;
+        int y = 0;
 
-                if(board[listY[0]-1][x].getColor().equals("W")){
-                Integer[] place = {x,listY[0]-1};
-                listY[0]--;
-                placeList.add(place);
-                }else{
-                    for(int i = 0; i < placeList.size(); i++) {
-                        Integer[] a = placeList.get(i);
-                        Stone inStone = new Stone(a[0],a[1],"B");
-                        putStone(inStone);
-                    }
-                    break;
-                }
+        ArrayList<Integer[]> placeList = new ArrayList<>();
 
-
-            }
-            while(!(board[listY[1]-1][listX[0]+1].getColor().equals("G")) && 0<listY[1] && listX[0]<7 ){
-                if(board[listY[1]-1][listX[0]].getColor().equals("W")){
-                    Integer[] place = {listX[0]+1,listY[1]-1};
-                    listY[1]--;
-                    listX[0]++;
-                    placeList2.add(place);
-                }else{
-                    for(int i = 0; i < placeList2.size(); i++){
-                        Integer[] a = placeList2.get(i);
-                        Stone inStone = new Stone(a[0],a[1],"B");
-                        putStone(inStone);
-                    }
-
-                }
-            }
-            while(){}
-            while(){}
-            while(){}
-            while(){}
-            while(){}
-            while(){}
-        } else {
-
+        Reverce(Stone stone, Stone[][] board) {
+            this.originalX = stone.getX();
+            this.originalY = stone.getY();
+            this.color = stone.getColor();
+            this.board = board;
         }
 
-    }
 
-}}**/
+        public int reverce(int vectorX, int vectorY){
+            int x = originalX;
+            int y = originalY;
+            ArrayList<Integer[]> placeList = new ArrayList<>();
+            exit : while (!(board[y + vectorY][x + vectorX].getColor().equals("G")) && 0 < y && y < 7 && 0 < x && x < 7) {
+                if (!(board[y + vectorY][x + vectorX].getColor().equals(color))) {
+                    Integer[] place = {x + vectorX, y + vectorY};
+                    placeList.add(place);
+                    x += vectorX;
+                    y += vectorY;
+                    this.x = x;
+                    this.y = y;
+                } else {
+                    if(placeList.size() == 0){
+                        break exit;
+                    }else{
+                        for (int i = 0; i < placeList.size(); i++) {
+                            Integer[] a = placeList.get(i);
+                            Stone inStone = new Stone(a[0], a[1], color);
+                            board[a[1]][a[0]] = inStone;
+                            this.placeList.add(a);
+                            break exit;
+                        }
+                    }
+                }
+            }
+            return placeList.size();
+
+        }
+    }
+}

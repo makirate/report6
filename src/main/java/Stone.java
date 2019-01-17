@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class Stone extends ArrayList<Stone> {
+    //石についてのクラス
 
     private int x;
     private int y;
@@ -23,11 +24,6 @@ public class Stone extends ArrayList<Stone> {
         this.color = "G";
     }
 
-    public Stone(String color){
-        this.color = color;
-
-    }
-
     public int getX(){
         return x;
     }
@@ -44,6 +40,8 @@ public class Stone extends ArrayList<Stone> {
     }
 
     public Stone getDate(String color) {
+        //ユーザーからの入力受付
+
         Scanner data = new Scanner(System.in);
         int x = data.nextInt()-1;
         int y = data.nextInt()-1;

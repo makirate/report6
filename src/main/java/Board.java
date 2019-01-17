@@ -5,6 +5,7 @@ public class Board {
     Stone[][] board = new Stone[8][8];
 
     public Board() {
+        //ボードをセットし、出力する
 
         for (int y = 0; y < 8; y++) {
             System.out.println();
@@ -30,6 +31,7 @@ public class Board {
     }
 
     public Stone[][] getBoard() {
+        //ボードを出力、返り値はBoardクラスのboard
         for (Stone[] boardX : board) {
             System.out.println();
             for (Stone stone : boardX) {
@@ -41,6 +43,7 @@ public class Board {
 
 
     public boolean putStone(Stone stone, Board board) {
+        //石を置く、既に石が置かれている場所にはfalseで返す
         int x = stone.getX();
         int y = stone.getY();
         boolean a;
@@ -54,6 +57,7 @@ public class Board {
     }
 
     static class Reverce {
+        //石を裏返すメソッドをここに作る
 
         private int originalX ;
         private int originalY ;
@@ -63,6 +67,7 @@ public class Board {
         int y = 0;
 
         ArrayList<Integer[]> placeList = new ArrayList<>();
+        //裏返した石の総数
 
         Reverce(Stone stone, Stone[][] board) {
             this.originalX = stone.getX();
@@ -72,7 +77,8 @@ public class Board {
         }
 
 
-        public int reverce(int vectorX, int vectorY){
+        public void reverce(int vectorX, int vectorY){
+            //石を裏返す、vectorX,y の方向の石について調べる
             int x = originalX;
             int y = originalY;
             ArrayList<Integer[]> placeList = new ArrayList<>();
@@ -98,7 +104,6 @@ public class Board {
                     }
                 }
             }
-            return placeList.size();
 
         }
     }

@@ -56,7 +56,6 @@ public class Board {
             }
             return a;
         }catch(ArrayIndexOutOfBoundsException e) {
-            System.out.println(e.getMessage());
             System.out.println("無効な数値です");
         }
         return false;

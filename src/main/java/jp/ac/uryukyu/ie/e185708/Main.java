@@ -1,4 +1,4 @@
-package jp.ac.uryukyu.ie_e185708;
+package jp.ac.uryukyu.ie.e185708;
 
 public class Main {
     public static void main(String[] args){

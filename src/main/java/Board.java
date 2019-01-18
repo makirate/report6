@@ -84,7 +84,7 @@ public class Board {
 
 
         public void reverce(int vectorX, int vectorY){
-            //石を裏返す、vectorX,y の方向の石について調べる
+            //石を裏返す、vectorX,Y の方向の石について調べる
             int x = originalX;
             int y = originalY;
             ArrayList<Integer[]> placeList = new ArrayList<>();

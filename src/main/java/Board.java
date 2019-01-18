@@ -42,18 +42,24 @@ public class Board {
     }
 
 
-    public boolean putStone(Stone stone, Board board) {
-        //石を置く、既に石が置かれている場所にはfalseで返す
-        int x = stone.getX();
-        int y = stone.getY();
-        boolean a;
-        if(board.board[y][x].getColor().equals("G")){
-            a = true;
-            board.board[y][x] = stone;
-        }else{
-            a = false;
+    public boolean putStone(Stone stone,Board board) {
+        //石を置く、置けない場所ではfalse を返す
+        try{
+            int x = stone.getX();
+            int y = stone.getY();
+            boolean a;
+            if(board.board[y][x].getColor().equals("G")){
+                a = true;
+                board.board[y][x] = stone;
+            }else{
+                a = false;
+            }
+            return a;
+        }catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+            System.out.println("無効な数値です");
         }
-        return a;
+        return false;
     }
 
     static class Reverce {

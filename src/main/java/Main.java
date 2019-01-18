@@ -27,8 +27,9 @@ public class Main {
                     System.out.println("pass");
                 }else{}
             } else {
-                //putStone()がfalse の時,既に石がおかれている
-                System.out.println("指定した位置にはすでに石があります、もう一度選択してください");
+                //putStone()がfalse の時
+                System.out.println("指定した位置はすでに石があるか、ボードの範囲外です");
+                System.out.println("もう一度選択してください");
                 countTurn-- ;
             }
             System.out.println();

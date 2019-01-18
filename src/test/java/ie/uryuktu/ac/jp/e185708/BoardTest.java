@@ -41,18 +41,25 @@ public class BoardTest {
 
 
     public boolean putStone(Stone stone,BoardTest board) {
-        int x = stone.getX();
-        int y = stone.getY();
-        boolean a;
-        if(board.board[y][x].getColor().equals("G")){
-            a = true;
-            board.board[y][x] = stone;
-        }else{
-            a = false;
+        try{
+            int x = stone.getX();
+            int y = stone.getY();
+            boolean a;
+            if(board.board[y][x].getColor().equals("G")){
+                a = true;
+                board.board[y][x] = stone;
+            }else{
+                a = false;
+            }
+            return a;
+        }catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+            System.out.println("無効な数値です");
         }
-        return a;
+        return false;
     }
 }
+
 
 class Reverce {
 
